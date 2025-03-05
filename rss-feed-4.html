@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climate Change</title>
+    <title>History</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/rss-feed.js"></script>
     <script src="js/toggle-dark.js" defer></script>
     <script>
-      const rssFilePath = 'rss/climate-change-and-sustainability.xml';
-      const numItems = 12;
+      const rssFilePath = 'rss/history.xml';
+      const numItems = 8;
       const numOfCharacters = 100;
 
       fetchAndProcessRSS(rssFilePath, numItems, numOfCharacters).then((rssData) => {
@@ -21,15 +21,19 @@
           rssData.forEach((item) => {
             let itemHTML = '';
             itemHTML += `
-                    <div class="row mb-4"> 
-                      <div class="col-md-4">
-                        <img src="${item.image}" alt="${item.title}" class="img-fluid"/>
-                      </div>
-                      <div class="col-md-8">
-                        <h3>${item.title}</h3>
-                        <p>${item.content}</p>
-                        <a href="${item.link}" target="_blank" class="btn btn-primary">Full Article</a>
-                      </div>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                ${item.title}
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    ${item.content}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                   `;
             rssContent.innerHTML += itemHTML;
@@ -57,10 +61,10 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link" href="index.html">Home</a>
-              <a class="nav-link active" aria-current="page" href="rss-feed-1.html">Climate Change</a>
+              <a class="nav-link" href="rss-feed-1.html">Climate Change</a>
               <a class="nav-link" href="rss-feed-2.html">Neuroscience</a>
               <a class="nav-link" href="rss-feed-3.html">Music</a>
-              <a class="nav-link" href="rss-feed-4.html">History</a>
+              <a class="nav-link active" aria-current="page" href="rss-feed-4.html">History</a>
             </div>
             <div class="ms-auto bg-dark" id="dark-mode">
               <div class="form-check form-switch">
@@ -73,7 +77,7 @@
       </nav>
     </header>
     <main>
-      <h1 class="mt-5 pt-5 text-center"><span>Climate Change and Sustainability</span></h1>
+      <h1 class="mt-5 pt-5 text-center"><span>History</span></h1>
       <div class="container mt-5" id="rss-content">
       </div>
     </main>
