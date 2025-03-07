@@ -11,31 +11,35 @@
     <script>
       const rssFilePath = 'rss/history.xml';
       const numItems = 8;
-      const numOfCharacters = 100;
+      const numOfCharacters = 200;
 
       fetchAndProcessRSS(rssFilePath, numItems, numOfCharacters).then((rssData) => {
         if (rssData) {
           const rssContent = document.getElementById('rss-content');
           let rowCount = 1;
 
-          rssData.forEach((item) => {
-            let itemHTML = '';
-            itemHTML += `
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                ${item.title}
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    ${item.content}
-                                </div>
-                            </div>
-                        </div>
+          rssData.forEach((item, index) => {
+            let uniqueID = `accordion${index}`;
+            let collapseID = `collapse${index}`;
+            let itemHTML = `
+              <div class = "accordion" id = "${uniqueID}">
+                <div class = "accordion-item mb-3">
+                  <h2 class "accordion-header">
+                    <button class = "accordion-button" type = "button" data-bs-toggle = "collapse" data-bs-target = "#${collapseID}" aria-expanded = "false" aria-controls = "${collapseID}">
+                      <strong>${item.title}</strong>
+                    </button>
+                  </h2>
+                  <div id = "${collapseID}" class = "accordion-collapse collapse" data-bs-parent = "#${uniqueID}">
+                    <div class = "accordion-body">
+                      ${item.content}
+                      <br>
+                      <a href="${item.link}" target = "_blank" class = "btn btn-primary">Full Article</a>
                     </div>
-                  `;
+                  </div>
+                </div>
+              </div>            
+            `;
+
             rssContent.innerHTML += itemHTML;
             rowCount++;
           });
@@ -77,7 +81,10 @@
       </nav>
     </header>
     <main>
-      <h1 class="mt-5 pt-5 text-center"><span>History</span></h1>
+      <h1 class="mt-5 pt-5 text-center">
+        <span>History</span>
+        <img src="images/history-book.png" alt="icon of a book and quill" class="header-icon">
+      </h1>
       <div class="container mt-5" id="rss-content">
       </div>
     </main>
@@ -86,7 +93,18 @@
         <div class="row">
           <div class="col-md-4 text-center text-md-start">&copy; 2025 Copyright</div>
           <div class="col-md-4 text-center">Matthew Macias</div>
-          <div class="col-md-4 text-center text-md-end">Spring 2025 Web Technologies Midterm</div>
+          <div class="col-md-4 text-center">Spring 2025 Web Technologies Midterm</div>
+          <div class="col-md-12 text-center text-md-start">
+            <a href="#">
+              <img id="insta" src="images/instagram.png" alt="instagram">
+            </a>
+            <a href="#">
+              <img id="tiktok" src="images/tik-tok.png" alt="tiktok">
+            </a>
+            <a href="#">
+              <img id="twitter" src="images/twitter.png" alt="twitter">
+            </a>
+          </div>
         </div>
       </div>
     </footer>

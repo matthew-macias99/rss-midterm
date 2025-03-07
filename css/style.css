@@ -16,4 +16,28 @@ body.dark-mode {
   margin: 0 auto;
   width: 100%;
 }
- 
+
+.accordion-button:focus{
+box-shadow: none !important;
+outline: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #f8f9fa !important;
+  color: black !important;
+}
+
+#play-pause-img{
+  width: 40px;
+  height: auto;
+}
+
+#insta, #tiktok, #twitter{
+  width: 40px;
+  height: auto;
+}
+
+.header-icon{
+  width: 100px;
+  height: auto;
+}

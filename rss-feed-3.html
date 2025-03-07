@@ -52,7 +52,6 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <!-- NAV -->
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link" href="index.html">Home</a>
@@ -72,7 +71,10 @@
       </nav>
     </header>
     <main>
-      <h1 class="mt-5 pt-5 text-center"><span>Music</span></h1>
+      <h1 class="mt-5 pt-5 text-center">
+        <span>Music</span>
+        <img src="images/musical-notes.png" alt="icon of musical notes" class="header-icon">
+      </h1>
       <div id="carouselExampleCaptions" class="carousel slide w-75 carousel-fade">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -96,13 +98,53 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+      <br>
+      <p class="text-center">While you read:</p>
+      <!-- simple play/pause button I wanted to try and do -->
+      <div class="d-flex justify-content-center mb-4">
+        <audio src="background-music/background-music.mp3" type="audio/mpg" id="bg-music" preload="auto">
+          Your browser does not support the audio element.
+        </audio>
+        <button id="play-button" class="btn btn-primary">
+          <img id="play-pause-img" src="images/play.png" alt="play icon">
+        </button>
+        <script>
+          const audio = document.getElementById("bg-music");
+          const playButton = document.getElementById("play-button");
+          const playPauseImg = document.getElementById("play-pause-img");
+    
+          playButton.addEventListener("click", function(){
+            if(audio.paused){
+              audio.play();
+              playPauseImg.src = "images/pause.png";
+              playPauseImg.alt = "pause music";
+            } 
+            else{
+              audio.pause();
+              playPauseImg.src = "images/play.png";
+              playPauseImg.alt = "play music";
+            }
+          });
+        </script>
+      </div>
     </main>
     <footer class="bg-dark text-light py-3">
       <div class="container">
         <div class="row">
           <div class="col-md-4 text-center text-md-start">&copy; 2025 Copyright</div>
           <div class="col-md-4 text-center">Matthew Macias</div>
-          <div class="col-md-4 text-center text-md-end">Spring 2025 Web Technologies Midterm</div>
+          <div class="col-md-4 text-center">Spring 2025 Web Technologies Midterm</div>
+          <div class="col-md-12 text-center text-md-start">
+            <a href="#">
+              <img id="insta" src="images/instagram.png" alt="instagram">
+            </a>
+            <a href="#">
+              <img id="tiktok" src="images/tik-tok.png" alt="tiktok">
+            </a>
+            <a href="#">
+              <img id="twitter" src="images/twitter.png" alt="twitter">
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -17,12 +17,12 @@
         if (rssData) {
           const rssContent = document.getElementById('rss-content');
           let rowCount = 1;
+          let itemHTML = '';
 
           rssData.forEach((item) => {
-            let itemHTML = '';
             itemHTML += `
-                    <div class="row mb-4"> 
-                      <div class="col-md-4">
+                    <div class="col-12 col-md-6 mb-4"> 
+                      <div class="card">
                         <img src="${item.image}" alt="${item.title}" class="img-fluid"/>
                       </div>
                       <div class="col-md-8">
@@ -31,9 +31,8 @@
                         <a href="${item.link}" target="_blank" class="btn btn-primary">Full Article</a>
                       </div>
                     </div>
-                  `;
-            rssContent.innerHTML += itemHTML;
-            rowCount++;
+                  `; 
+            rssContent.innerHTML = itemHTML;
           });
         }
       });
@@ -73,8 +72,13 @@
       </nav>
     </header>
     <main>
-      <h1 class="mt-5 pt-5 text-center"><span>Climate Change and Sustainability</span></h1>
-      <div class="container mt-5" id="rss-content">
+      <h1 class="mt-5 pt-5 mb-5 text-center">
+        <span>Climate Change and Sustainability</span>
+        <img src="images/climate-change.png" alt="icon of a simplified idea of climate change" class="header-icon">
+      </h1>
+      <div class="container mt-5">
+        <div id="rss-content" class="row">
+        </div>
       </div>
     </main>
     <footer class="bg-dark text-light py-3">
@@ -82,7 +86,18 @@
         <div class="row">
           <div class="col-md-4 text-center text-md-start">&copy; 2025 Copyright</div>
           <div class="col-md-4 text-center">Matthew Macias</div>
-          <div class="col-md-4 text-center text-md-end">Spring 2025 Web Technologies Midterm</div>
+          <div class="col-md-4 text-center">Spring 2025 Web Technologies Midterm</div>
+          <div class="col-md-12 text-center text-md-start">
+            <a href="#">
+              <img id="insta" src="images/instagram.png" alt="instagram">
+            </a>
+            <a href="#">
+              <img id="tiktok" src="images/tik-tok.png" alt="tiktok">
+            </a>
+            <a href="#">
+              <img id="twitter" src="images/twitter.png" alt="twitter">
+            </a>
+          </div>
         </div>
       </div>
     </footer>
